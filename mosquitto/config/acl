@@ -1,0 +1,7 @@
+user kilab-pc1
+topic read mc/kilab-pc1/cmd
+topic write mc/kilab-pc1/cmd
+topic read mc/kilab-pc1/events
+topic write mc/kilab-pc1/events
+topic read mc/kilab-pc1/hud
+topic write mc/kilab-pc1/hud
