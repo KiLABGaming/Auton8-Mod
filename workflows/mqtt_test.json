@@ -1,0 +1,44 @@
+{
+  "name": "MQTT Test",
+  "nodes": [
+    {
+      "parameters": {
+        "topic": "mc/kilab-pc1/cmd",
+        "sendInputData": false,
+        "message": "{ \"type\":\"server_chat\", \"text\":\"hi\" }",
+        "options": {
+          "qos": 2
+        }
+      },
+      "type": "n8n-nodes-base.mqtt",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d7571439-08c3-4040-baf8-0939739ca546",
+      "name": "MQTT",
+      "alwaysOutputData": false,
+      "notesInFlow": false,
+      "credentials": {
+        "mqtt": {
+          "id": "0QJWf5cTQXx1AADK",
+          "name": "MQTT account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "27af6dd5-d819-4b14-a45f-95b0afc0072e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5eb9b811608a7c5f59d803a144271319ad6024ba8385f9c9fb7490ed5dbf0560"
+  },
+  "id": "nsAXKOzpacqvaLg0",
+  "tags": []
+}
