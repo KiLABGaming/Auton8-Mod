@@ -23,8 +23,11 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     // MQTT (embed it so it’s available in-game)
-    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}")
-    include("org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}")
+    implementation "org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}"
+    include "org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}"
+
+    // load all files matching libs/*.jar
+    modLocalRuntime fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 processResources {
