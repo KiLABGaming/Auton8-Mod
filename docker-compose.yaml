@@ -5,7 +5,7 @@ services:
         container_name: auton8-mosquitto
         restart: unless-stopped
         volumes:
-            - mosquitto-config:/mosquitto/config
+            - ./mosquitto-config:/mosquitto/config
             - mosquitto-data:/mosquitto/data
         # expose to HOST loopback only (not the LAN):
         ports:
@@ -37,6 +37,5 @@ services:
 
 
 volumes:
-    mosquitto-config:
     mosquitto-data:
     n8n-data:
