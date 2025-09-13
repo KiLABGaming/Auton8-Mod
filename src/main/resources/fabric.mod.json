@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "auton8",
+  "version": "@mod_version@",
+  "name": "Auton8",
+  "description": "n8n for Minecraft",
+  "authors": [
+    "KiLABGaming"
+  ],
+  "contact": {
+    "website": "https://github.com/KiLABGaming/auton8"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "com.kilab.auton8.Mod"
+    ]
+  },
+  "mixins": [
+    "auton8.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "@minecraft_version@",
+    "fabricloader": ">=@fabric_loader_version@",
+    "fabric": ">=@fabric_api_version@"
+  }
+}
