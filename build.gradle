@@ -42,9 +42,6 @@ jar {
     exclude('icon.png')
 }
 
-def artifactName(String type, String fileExt) {
-    return "auton8-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
-}
-
-remapJar.archiveFileName.set(artifactName('fabric', 'jar'))
+//  final mod jar will be dropped in build/dist
 remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
+remapJar.archiveFileName.set("auton8-${project.version}+${project.minecraft_version}-fabric.jar")
