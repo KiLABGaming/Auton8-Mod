@@ -1,0 +1,50 @@
+plugins {
+    id 'fabric-loom' version '1.11-SNAPSHOT'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+tasks.withType(JavaCompile).configureEach {
+    it.sourceCompatibility = it.targetCompatibility = JavaVersion.toVersion(project.java_version)
+    it.options.release = Integer.valueOf(project.java_version)
+    it.options.encoding = 'UTF-8'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
+    archivesBaseName = project.archives_base_name
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings_version}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    // MQTT (embed it so it’s available in-game)
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}")
+    include("org.eclipse.paho:org.eclipse.paho.client.mqttv3:${project.mqtt_version}")
+}
+
+processResources {
+    filteringCharset "UTF-8"
+    filesMatching("fabric.mod.json") {
+        filter { line -> line.replace("@mod_version@", project.version) }
+        filter { line -> line.replace("@minecraft_version@", minecraft_version) }
+        filter { line -> line.replace("@fabric_loader_version@", fabric_loader_version) }
+        filter { line -> line.replace("@fabric_api_version@", fabric_api_version) }
+    }
+}
+
+jar {
+    from("LICENSE.txt")
+    exclude('icon.png')
+}
+
+def artifactName(String type, String fileExt) {
+    return "${project.name.toLowerCase()}-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
+}
+
+remapJar.archiveFileName.set(artifactName('fabric', 'jar'))
+remapJar.destinationDirectory.set(layout.buildDirectory.dir('dist'))
