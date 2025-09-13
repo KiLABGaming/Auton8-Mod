@@ -3,7 +3,7 @@
   "id": "auton8",
   "version": "@mod_version@",
   "name": "Auton8",
-  "description": "n8n for Minecraft",
+  "description": "n8n agent hooks for baritone control",
   "authors": [
     "KiLABGaming"
   ],
