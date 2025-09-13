@@ -43,7 +43,7 @@ jar {
 }
 
 def artifactName(String type, String fileExt) {
-    return "${project.name.toLowerCase()}-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
+    return "auton8-${project.version}+${project.minecraft_version}-${type}.${fileExt}"
 }
 
 remapJar.archiveFileName.set(artifactName('fabric', 'jar'))
