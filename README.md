@@ -1,7 +1,7 @@
 <table align="center" width="100%">
   <tr>
     <td align="center" width="130" style="min-width:130px;">
-      <img src="src/main/resources/assets/template/icon.png" alt="Auton8 logo" width="110">
+      <img src="src/main/resources/icon.png" alt="Auton8 logo" width="110">
     </td>
     <td>
 

@@ -42,7 +42,7 @@ processResources {
 
 jar {
     from("LICENSE.txt")
-    exclude('icon.png')
+    //exclude('icon.png')
 }
 
 //  final mod jar will be dropped in build/dist
