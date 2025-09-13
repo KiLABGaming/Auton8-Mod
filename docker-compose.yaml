@@ -4,8 +4,9 @@ services:
         image: eclipse-mosquitto:2
         container_name: auton8-mosquitto
         restart: unless-stopped
+        user: "1000:1000"
         volumes:
-            - ./mosquitto-config:/mosquitto/config
+            - ./mosquitto/config:/mosquitto/config
             - mosquitto-data:/mosquitto/data
         # expose to HOST loopback only (not the LAN):
         ports:
