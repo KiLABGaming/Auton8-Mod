@@ -6,6 +6,7 @@ services:
             dockerfile: Dockerfile
         container_name: auton8-mosquitto
         restart: unless-stopped
+        user: ${PUID}:${PGID}
         environment:
             - NO_COLOR=true
         volumes:
@@ -21,6 +22,7 @@ services:
         image: n8nio/n8n:latest
         container_name: auton8-n8n
         restart: unless-stopped
+        user: ${PUID}:${PGID}
         environment:
             - TZ=${TZ}
             - N8N_HOST=${N8N_HOST}
