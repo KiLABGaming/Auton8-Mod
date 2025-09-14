@@ -1,5 +1,24 @@
 services:
 
+    mosquitto-init:
+        build:
+            context: mosquitto
+            dockerfile: Dockerfile
+        container_name: auton8-mosquitto-init
+        restart: no # run once, then exit
+        user: ${PUID}:${PGID}
+        environment:
+            - MQTT_USER=${MQTT_USER}
+            - MQTT_PASS=${MQTT_PASS}
+        volumes:
+            - ./mosquitto/config:/mosquitto/config
+        command: >
+            sh -c '
+              touch /mosquitto/config/passwd &&
+              chmod 0700 /mosquitto/config/passwd &&
+              mosquitto_passwd -b /mosquitto/config/passwd "$$MQTT_USER" "$$MQTT_PASS"
+            '
+
     mosquitto:
         build:
             context: mosquitto
@@ -7,16 +26,15 @@ services:
         container_name: auton8-mosquitto
         restart: unless-stopped
         user: ${PUID}:${PGID}
-        environment:
-            - NO_COLOR=true
         volumes:
-            - ./mosquitto/config:/mosquitto/config
-            - mosquitto-data:/mosquitto/data
-        # expose to HOST loopback only (not the LAN):
+            - ./mosquitto/config:/mosquitto/config # directory mount
+            - mosquitto-data:/mosquitto/data # managed volume
         ports:
-            - "127.0.0.1:1883:1883"
-        command: >
-            sh -c "touch /mosquitto/config/passwd && /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf"
+            - "127.0.0.1:1883:1883" # expose to localhost only
+        command: mosquitto -c /mosquitto/config/mosquitto.conf
+        depends_on:
+            mosquitto-init:
+                condition: service_completed_successfully
 
     n8n:
         image: n8nio/n8n:latest

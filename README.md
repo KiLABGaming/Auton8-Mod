@@ -73,3 +73,4 @@ private static final String USERNAME   = "kilab-pc1";
 private static final String PASSWORD   = "YOUR_SUPER_STRONG_PASSWORD";
 private static final String CMD_TOPIC  = "mc/kilab-pc1/cmd";
 private static final String EVT_TOPIC  = "mc/kilab-pc1/events";
+```
