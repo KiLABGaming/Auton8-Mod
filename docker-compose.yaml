@@ -1,7 +1,9 @@
 services:
 
     mosquitto:
-        image: eclipse-mosquitto:2
+        build:
+            context: mosquitto
+            dockerfile: Dockerfile
         container_name: auton8-mosquitto
         restart: unless-stopped
         volumes:
@@ -11,8 +13,7 @@ services:
         ports:
             - "127.0.0.1:1883:1883"
         command: >
-            sh -c "touch /mosquitto/config/passwd &&
-                   /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf"
+            sh -c "touch /mosquitto/config/passwd && /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf"
 
     n8n:
         image: n8nio/n8n:latest
