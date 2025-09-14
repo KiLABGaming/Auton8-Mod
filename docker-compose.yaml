@@ -24,13 +24,16 @@ services:
         restart: unless-stopped
         user: ${PUID}:${PGID}
         environment:
-            - TZ=${TZ}
-            - N8N_HOST=${N8N_HOST}
-            - N8N_PORT=${N8N_PORT}
-            - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL}
+            - N8N_HOST=${N8N_HOST:-"localhost"}
+            - N8N_PORT=${N8N_PORT:-5678}
+            - N8N_EDITOR_BASE_URL=${N8N_EDITOR_BASE_URL:-"http://localhost:5678"}
             - N8N_PROTOCOL=http
+            - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
+            - N8N_DIAGNOSTICS_ENABLED=false
+            - N8N_HIRING_BANNER_ENABLED=false
+            - N8N_HIDE_USAGE_PAGE=true
+            - TZ=${TZ}
             - GENERIC_TIMEZONE=${TZ}
-            # Local file storage (sqlite)
             - DB_TYPE=sqlite
             - DB_SQLITE_VACUUM_ON_STARTUP=true
             - NO_COLOR=true
