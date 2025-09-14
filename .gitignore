@@ -6,12 +6,7 @@
 /run/
 
 # --- Mosquitto: ignore all, then allow config (except passwd) ---
-/mosquitto/*
-!/mosquitto/config/
-!/mosquitto/config/mosquitto.conf
-!/mosquitto/config/acl
 /mosquitto/config/passwd
-/mosquitto/data/
 
 # --- n8n local state ---
 /n8n/
