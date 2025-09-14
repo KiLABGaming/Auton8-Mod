@@ -6,6 +6,8 @@ services:
             dockerfile: Dockerfile
         container_name: auton8-mosquitto
         restart: unless-stopped
+        environment:
+            - NO_COLOR=true
         volumes:
             - ./mosquitto/config:/mosquitto/config
             - mosquitto-data:/mosquitto/data
@@ -29,6 +31,7 @@ services:
             # Local file storage (sqlite)
             - DB_TYPE=sqlite
             - DB_SQLITE_VACUUM_ON_STARTUP=true
+            - NO_COLOR=true
         volumes:
             - n8n-data:/home/node/.n8n
         ports:
